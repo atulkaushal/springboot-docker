@@ -1,4 +1,4 @@
-#Build using individual commands:
+# Build using individual commands:
 
 mvnw clean package
 
@@ -14,6 +14,6 @@ docker run --name mysql-docker --network=my-network  -e MYSQL_ROOT_PASSWORD=root
 
 docker run -p 8080:8080 --network=my-network akaushal85/spring-boot-docker
 
-#Build using docker compose:
+# Build using docker compose:
 
 docker-compose up
