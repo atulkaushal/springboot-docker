@@ -1,0 +1,27 @@
+version: '3'
+services:
+  mysql-docker:
+    image: mysql:latest
+    networks:
+      - my-network
+    ports:
+      - 3307:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=mysql_docker
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=root
+  app:
+    image: akaushal85/spring-boot-docker:latest
+    networks:
+      - my-network
+    ports:
+      - 8080:8080
+    environment:
+      SPRING_DATABASE_URL: jdbc:mysql://mysql-docker:3306/mysql_docker
+    depends_on:
+      - mysql-docker
+networks:
+  my-network:
+    driver: bridge
+    
